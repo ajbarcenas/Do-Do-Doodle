@@ -1,8 +1,11 @@
 const express = require("express");
 var app = express();
 var http = require("http").createServer(app);
-const ws = require("ws");
+var io = require("socket.io")(http);
 var PORT = process.env.PORT || 3001;
+
+
+
 //https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css
 app.use(express.static(`${__dirname}/client`));
 
