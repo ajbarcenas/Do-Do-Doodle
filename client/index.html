@@ -10,6 +10,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+   <script src = "/socket.io/socket.io.js"></script>
+<script src = "./client.js"> </script>
+<!-- <script>
+var socket = io();
+socket.on('newclientconnect',function(data) {
+   document.body.innerHTML = '';
+   document.write(data.description);
+}); -->
+</script>
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -17,7 +26,6 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -27,7 +35,24 @@
         </li>
       </ul>
     </div>
+
   </nav>
 
+  <!-- <div class="form-group">
+<label class="col-form-label col-form-label-sm" for="inputSmall">User Name</label>
+<div id = "error-container"></div>
+<input class="form-control form-control-sm" type="text" placeholder="enter a username" id="name" value="" name="name">
+<button type="button" class="btn btn-secondary" name="button" onclick="setUsername()">Chat</button>
+</div> -->
+<br>
+<br>
+<br>
+<br>
+<div id = "error-container"></div>
+<input id = "name" type = "text" name = "name" value = ""
+   placeholder = "Enter your name!">
+<button type = "button" name = "button" onclick = "setUsername()">
+   Let me chat!
+</button>
 </body>
 </html>
