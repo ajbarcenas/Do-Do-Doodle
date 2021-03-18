@@ -10,14 +10,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<!-- 
   <style type="text/css">
     canvas{
       border: 1px solid black;
     }
   </style>
+--> 
 </head>
+<link rel="stylesheet" href="style/master.css">
 <body>
-
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Do-Do-Doodle!</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +36,26 @@
       </ul>
     </div>
   </nav>
-  <canvas></canvas>
+  <div id = "toolbar">
+    
+    <div id = "rad">
+      Brush Thickness: <span id = "radval"></span>
+      <button id = "decrad" class = "radcontrol"> - </button>
+      <button id = "incrad" class = "radcontrol"> + </button>
+    </div>
+    
+    <div id="colors"></div>
+    
+    <div id="resets">
+      <button  id = "undo"  class= "button"> Undo </button>
+      <button onclick="clear_canvas()" id = "clear" class= "button"> Clear </button>
+    </div>
+  </div>
+  <canvas id="canvas" style="border: 10px solid black;"> Test </canvas>
   <script src="Canvas/canvas.js"></script>
+  <script src="Canvas/radius.js"></script>
+  <script src="Canvas/colors.js"></script>
+
+
 </body>
 </html>
