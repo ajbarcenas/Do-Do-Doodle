@@ -5,20 +5,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./style/bootstrap.min.css">
+    <link rel="stylesheet" href="./style/style.css">
   <link rel="shortcut icon" href="../public/assets/favicon.png" type="image/png">
   <link rel="icon" type="image/png" href="../public/assets/favicon.png"/>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
    <script src = "/socket.io/socket.io.js"></script>
-<script src = "./client.js"> </script>
-<!-- <script>
-var socket = io();
-socket.on('newclientconnect',function(data) {
-   document.body.innerHTML = '';
-   document.write(data.description);
-}); -->
-</script>
+
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -37,22 +32,32 @@ socket.on('newclientconnect',function(data) {
     </div>
 
   </nav>
+  <div id = "place">
+  <div id="container">
+      <section>
+          <h2>Messages</h2>
+          <ul id="messages"></ul>
+      </section>
+      <footer>
+          <h2>Input</h2>
+          <form action="">
+              <input id="boxMessage" autocomplete="off" disabled="true"/><button id="buttonMessage" disabled="true">Send</button>
+          </form>
+      </footer>
+  </div>
 
-  <!-- <div class="form-group">
-<label class="col-form-label col-form-label-sm" for="inputSmall">User Name</label>
-<div id = "error-container"></div>
-<input class="form-control form-control-sm" type="text" placeholder="enter a username" id="name" value="" name="name">
-<button type="button" class="btn btn-secondary" name="button" onclick="setUsername()">Chat</button>
-</div> -->
+  <aside>
+    <h2>Members</h2>
+    <input id="boxNick" type="text" placeholder="your nickname?" size="13"/>
+    <button type="submit" id="buttonNick" onClick="setMyName()">Set</button>
+    <ul id="ulist"></ul>
+  </aside>
+</div>
+<script src = "./client.js"> </script>
 <br>
 <br>
 <br>
 <br>
-<div id = "error-container"></div>
-<input id = "name" type = "text" name = "name" value = ""
-   placeholder = "Enter your name!">
-<button type = "button" name = "button" onclick = "setUsername()">
-   Let me chat!
 </button>
 </body>
 </html>

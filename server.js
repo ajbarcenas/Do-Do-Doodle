@@ -1,13 +1,18 @@
-const express = require("express");
+const express = require("express")
 var app = require('express')();
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
 var path = require("path");
-var PORT = process.env.PORT || 3001;
+var ip = require("ip");
+var PORT = process.env.PORT || 3000;
 
+
+var clients = [];
+var increment = 1;
 
 
 //https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css
+
 app.use(express.static(`${__dirname}/client`));
 // Testing to see if server can operate correctly
 app.get('/', function(req,res) {
@@ -15,58 +20,50 @@ app.get('/', function(req,res) {
 });
 
 
-var clients = 0;
-var roomno = 1;
+function getUsersList(){
+  var usersList = [];
+    for (var i = 0; i < clients.length; i++){
+      usersList[i] = clients[i].n;
+    }
+  return usersList;
+}
 
 
-
-//Whenever someone connects this gets executed
-users = [];
-io.on('connection', function(socket) {
-   console.log('A user connected');
-   socket.on('setUsername', function(data) {
-      console.log("User "+data + " has connected!");
-      if(users.indexOf(data) > -1) {
-         socket.emit('userExists', data + ' username is taken! Try some other username.');
-      } else {
-         users.push(data);
-         socket.emit('userSet', {username: data});
-      }
-   });
-
-   socket.on('msg', function(data) {
-      //Send message to everyone
-      io.sockets.emit('newmsg', data);
-   })
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
 });
 
-//
-// users = [];
-//   io.on('connection', function(socket) {
-//      console.log('A user connected');
-//      //clients++;
-//
-//      socket.on('setUsername', function(data) {
-//         console.log("User "+data+" has connected!");
-//         if(users.indexOf(data) > -1) {
-//            socket.emit('userExists', data + ' username is taken! Try some other username.');
-//         } else {
-//            users.push(data);
-//            socket.emit('userSet', {username: data});
-//         }
-//      });
-//
-//      socket.on('msg', function(data) {
-//    //Send message to everyone
-//    io.sockets.emit('newmsg', data);
-// })
-//      //Whenever someone disconnects this piece of code executed
-//      socket.on('disconnect', function () {
-//         clients--;
-//         socket.broadcast.emit('newclientconnect', {description: clients + ' clients connected'});
-//         console.log('A user disconnected');
-//      });
-//   });
+io.on('connection', function(socket){
+  clients.push(socket);
+
+  socket.on('start', function(){
+    socket.emit('nick', "guest"+increment);
+    clients[clients.indexOf(socket)].n = "guest"+increment;
+    increment++;
+    io.emit('users list', getUsersList());
+  });
+
+  socket.on('send chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+
+  socket.on('set nick', function(nick){
+    io.emit('info', "New user: " + nick);
+    clients[clients.indexOf(socket)].n = nick;
+    io.emit('users list', getUsersList());
+  });
+
+
+  socket.on('disconnect', function() {
+    if( clients[clients.indexOf(socket)].n == null ){
+    }
+    else{
+      io.emit('info', "User " + clients[clients.indexOf(socket)].n + " disconnected.");
+    }
+    clients.splice(clients.indexOf(socket),1);//clientIndex, 1);
+    io.emit('users list', getUsersList());
+   });
+});
 
 http.listen(PORT, function() {
   console.log(`Server started on port: ${PORT}`);
