@@ -5,8 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./style/bootstrap.min.css">
+    <link rel="stylesheet" href="./style/style.css">
   <link rel="shortcut icon" href="../public/assets/favicon.png" type="image/png">
   <link rel="icon" type="image/png" href="../public/assets/favicon.png"/>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -18,6 +20,8 @@
   </style>
 --> 
 </head>
+   <script src = "/socket.io/socket.io.js"></script>
+
 <link rel="stylesheet" href="style/master.css">
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -25,7 +29,6 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -35,7 +38,28 @@
         </li>
       </ul>
     </div>
+
   </nav>
+  <div id = "place">
+  <div id="container">
+      <section>
+          <h2>Messages</h2>
+          <ul id="messages"></ul>
+      </section>
+      <footer>
+          <h2>Input</h2>
+          <form action="">
+              <input id="boxMessage" autocomplete="off" disabled="true"/><button id="buttonMessage" disabled="true">Send</button>
+          </form>
+      </footer>
+  </div>
+    <aside>
+    <h2>Members</h2>
+    <input id="boxNick" type="text" placeholder="your nickname?" size="13"/>
+    <button type="submit" id="buttonNick" onClick="setMyName()">Set</button>
+    <ul id="ulist"></ul>
+  </aside>
+</div>
   <div id = "toolbar">
     
     <div id = "rad">
@@ -62,5 +86,12 @@
   <script src="Game/wordGen.js"></script>
 
 
+
+<script src = "./client.js"> </script>
+<br>
+<br>
+<br>
+<br>
+</button>
 </body>
 </html>
