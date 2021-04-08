@@ -44,17 +44,22 @@
       <button id = "incrad" class = "radcontrol"> + </button>
     </div>
     
-    <div id="colors"></div>
-    
     <div id="resets">
       <button  id = "undo"  class= "button"> Undo </button>
       <button onclick="clear_canvas()" id = "clear" class= "button"> Clear </button>
     </div>
   </div>
+
+  <div id = "toolbarWord">
+    <div id="generate"></div>
+    <button class="btn btn-primary" id="roll"> Generate Word </button>
+  </div>
+
   <canvas id="canvas" style="border: 10px solid black;"> Test </canvas>
   <script src="Canvas/canvas.js"></script>
   <script src="Canvas/radius.js"></script>
   <script src="Canvas/colors.js"></script>
+  <script src="Game/wordGen.js"></script>
 
 
 </body>
