@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
    canvas.onmousemove = function(e) {
       // normalize mouse position to range 0.0 - 1.0
-      mouse.pos.x = e.clientX / width;
-      mouse.pos.y = e.clientY / height;
+      mouse.pos.x = e.offsetX / width;
+      mouse.pos.y = e.offsetY / height;
       mouse.move = true;
    };
 
