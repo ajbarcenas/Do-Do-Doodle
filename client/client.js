@@ -91,6 +91,13 @@ document.addEventListener("DOMContentLoaded", function() {
       context.stroke();
    });
 
+   //When clicked reset the canvas back to an empy canvas 
+   $("#resetCanvas").click(function(){
+    var canvas= document.getElementById('drawing');
+   var ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0,  canvas.width, canvas.height);
+  });
+
    // main loop, running every 25ms
    function mainLoop() {
       // check if the user is drawing
@@ -101,6 +108,12 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       mouse.pos_prev = {x: mouse.pos.x, y: mouse.pos.y};
       setTimeout(mainLoop, 25);
+
+      $("#resetCanvas").click(function(){
+        var canvas= document.getElementById('drawing');
+       var ctx = canvas.getContext('2d');
+          ctx.clearRect(0, 0,  canvas.width, canvas.height);
+      });
    }
    mainLoop();
 });
