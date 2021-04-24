@@ -53,6 +53,12 @@ function updateUserList(u){
   }
 }
 
+function clearit(){
+  socket.emit('clearit', true);
+  }
+function incRad(){
+  socket.emit('incRad', true);
+  }
 document.addEventListener("DOMContentLoaded", function() {
    var mouse = {
       click: false,
@@ -66,6 +72,9 @@ document.addEventListener("DOMContentLoaded", function() {
    var width   = window.innerWidth;
    var height  = window.innerHeight;
    var socket  = io.connect();
+
+   var radius = 10;
+   context.lineWidth = radius * 2; // Smoothes out the line
 
    // set canvas to full browser width/height
    canvas.width = width;
@@ -88,15 +97,26 @@ document.addEventListener("DOMContentLoaded", function() {
       context.beginPath();
       context.moveTo(line[0].x * width, line[0].y * height);
       context.lineTo(line[1].x * width, line[1].y * height);
+      context.arc(line[0], line[0], radius, 0, Math.PI * 2);
       context.stroke();
    });
 
    //When clicked reset the canvas back to an empy canvas 
-   $("#resetCanvas").click(function(){
+/*    $("#resetCanvas").click(function(){
     var canvas= document.getElementById('drawing');
    var ctx = canvas.getContext('2d');
       ctx.clearRect(0, 0,  canvas.width, canvas.height);
-  });
+  }); */
+  socket.on('clearit', function(){
+    context.clearRect(0, 0, width, height);
+    console.log("client clearit");
+    });
+
+  socket.on('incRad', function(){
+    context.clearRect(0, 0, width, height);
+    console.log("client incRad");
+    });
+
 
    // main loop, running every 25ms
    function mainLoop() {
@@ -115,5 +135,57 @@ document.addEventListener("DOMContentLoaded", function() {
           ctx.clearRect(0, 0,  canvas.width, canvas.height);
       });
    }
+
+   var words = [
+    "America",
+    "Balloon",
+    "Biscuit",
+    "Blanket",
+    "Chicken",
+    "Chimney",
+    "Country",
+    "Cupcake",
+    "Curtain",
+    "Diamond",
+    "Eyebrow",
+    "Fireman",
+    "Florida",
+    "Germany",
+    "Harpoon",
+    "Husband",
+    "Morning",
+    "Octopus",
+    "Popcorn",
+    "Printer",
+    "Sandbox",
+    "Skyline",
+    "Spinach"];
+
+    var choice = Math.floor(Math.random()*22);
+    var answer = words[choice];
+    var myLength = answer.length;
+
+    let game = document.getElementById("game");
+    let submitButton =document.getElementById("submitGuess");
+    let newGameButton = document.getElementById("newGame");
+    let result = document.getElementById("result");
+
+    submitButton.addEventListener('click', function() {
+      let userGuess = document.getElementById("guessField").value;
+      console.log(answer);
+
+      if(userGuess == answer){
+        result.innerText = "Correct!";
+        game.style.backgroundColor = 'green';
+      }
+      else{
+        result.innerText = "Incorrect!";
+        game.style.backgroundColor = 'red';
+      }
+    })
+
+
+
+   
    mainLoop();
 });

@@ -76,6 +76,13 @@ socket.on('draw_line', function (data) {
    // send line to all clients
    io.emit('draw_line', { line: data.line });
 });
+
+socket.on('clearit', function(){
+  line_history = [];
+  io.emit('clearit', true);
+  });
+
+  
 });
 
 http.listen(PORT, function() {

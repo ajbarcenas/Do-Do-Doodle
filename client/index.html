@@ -60,7 +60,16 @@
     <ul id="ulist"></ul>
   </aside>
 </div>
-<button class="btn btn-primary" id="resetCanvas"> Reset Canvas </button>
+
+<div id="game">
+  <h1> Guess the drawing </h1>
+  <div>
+    <input type="text" id="guessField" placeholder="Enter your Guess"/>
+    <input type="submit" value="Submit" id="submitGuess">
+    <input type="submit" value="New" id="newGame">
+  </div>
+  <p id="result"></p>
+</div>
   <!-- <div id = "toolbar">
 
     <div id = "rad">
@@ -87,9 +96,12 @@
   <script src="Game/wordGen.js"></script> -->
 
 
-
 <script src = "./client.js"> </script>
+<input type="button" value="Clear" onclick="clearit();"/>
+<input type="button" value="+" onclick="incRad();"/>
+
       <canvas id="drawing"></canvas>
+
 <br>
 <br>
 <br>
