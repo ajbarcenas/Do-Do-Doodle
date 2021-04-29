@@ -53,11 +53,10 @@ function updateUserList(u){
   }
 }
 
+
+
 function clearit(){
   socket.emit('clearit', true);
-  }
-function incRad(){
-  socket.emit('incRad', true);
   }
 document.addEventListener("DOMContentLoaded", function() {
    var mouse = {
@@ -72,9 +71,6 @@ document.addEventListener("DOMContentLoaded", function() {
    var width   = window.innerWidth;
    var height  = window.innerHeight;
    var socket  = io.connect();
-
-   var radius = 10;
-   context.lineWidth = radius * 2; // Smoothes out the line
 
    // set canvas to full browser width/height
    canvas.width = width;
@@ -97,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function() {
       context.beginPath();
       context.moveTo(line[0].x * width, line[0].y * height);
       context.lineTo(line[1].x * width, line[1].y * height);
-      context.arc(line[0], line[0], radius, 0, Math.PI * 2);
       context.stroke();
    });
 
@@ -111,12 +106,6 @@ document.addEventListener("DOMContentLoaded", function() {
     context.clearRect(0, 0, width, height);
     console.log("client clearit");
     });
-
-  socket.on('incRad', function(){
-    context.clearRect(0, 0, width, height);
-    console.log("client incRad");
-    });
-
 
    // main loop, running every 25ms
    function mainLoop() {
@@ -134,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
        var ctx = canvas.getContext('2d');
           ctx.clearRect(0, 0,  canvas.width, canvas.height);
       });
+      
    }
 
    var words = [
@@ -183,7 +173,17 @@ document.addEventListener("DOMContentLoaded", function() {
         game.style.backgroundColor = 'red';
       }
     })
-
+          //var ctxx =canvas.getContext('2d');
+          context.lineCap='round';
+          var linewidth=5;
+          context.lineWidth=linewidth;
+          
+          $myslider=$('#myslider');
+          $myslider.attr({min:1,max:25}).val(linewidth);
+          
+          $myslider.on('input change',function(){
+          linewidth=context.lineWidth=parseInt($(this).val());
+          });
 
 
    
