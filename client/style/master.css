@@ -62,3 +62,115 @@
   text-align: center;
   padding: 5px;
 }
+
+.button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #4caf50;
+}
+
+.button1:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+.button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #008cba;
+}
+
+.button2:hover {
+  background-color: #008cba;
+  color: white;
+}
+
+.button3 {
+  background-color: white;
+  color: black;
+  border: 2px solid #f44336;
+}
+
+.button3:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.button4 {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+}
+
+.button4:hover {
+  background-color: #e7e7e7;
+}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button5:hover {
+  background-color: #555555;
+  color: white;
+}
+
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: url(/Do-Do-Doodle/client/Pictures/ball.png);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: url(/Do-Do-Doodle/client/Pictures/ball.png);
+  cursor: pointer;
+}
+
+#grad1 {
+  height: 100px;
+  background-color: #5cf7ce; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to right, #3de37d, #64ccf5);
+}

@@ -68,13 +68,14 @@ document.addEventListener("DOMContentLoaded", function() {
    // get canvas element and create context
    var canvas  = document.getElementById('drawing');
    var context = canvas.getContext('2d');
-   var width   = window.innerWidth;
-   var height  = window.innerHeight;
+   var width   = 1500;
+   var height  = 500;
    var socket  = io.connect();
 
    // set canvas to full browser width/height
    canvas.width = width;
    canvas.height = height;
+   canvas.style.border = '5px solid black';
 
    // register mouse event handlers
    canvas.onmousedown = function(e){ mouse.click = true; };
@@ -166,11 +167,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
       if(userGuess == answer){
         result.innerText = "Correct!";
-        game.style.backgroundColor = 'green';
+        game.style.backgroundColor = '#66ff75';
       }
       else{
         result.innerText = "Incorrect!";
-        game.style.backgroundColor = 'red';
+        result.style.color = "black";
+        result.style.fontWeight = 'bold';
+        result.style.fontSize = '100';
+        game.style.backgroundColor = '#ff6666';
       }
     })
           //var ctxx =canvas.getContext('2d');
