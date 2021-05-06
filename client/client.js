@@ -63,7 +63,8 @@ document.addEventListener("DOMContentLoaded", function() {
       click: false,
       move: false,
       pos: {x:0, y:0},
-      pos_prev: false
+      pos_prev: false,
+      //color: 'red'
    };
    // get canvas element and create context
    var canvas  = document.getElementById('drawing');
@@ -126,6 +127,8 @@ document.addEventListener("DOMContentLoaded", function() {
       });
       
    }
+
+   //Put all this in its own function
 
    var words = [
     "America",
