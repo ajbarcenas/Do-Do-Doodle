@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "ip": "^1.1.5",
+    "random-words": "^1.1.1",
     "socket.io": "^4.0.0",
     "websockets": "^0.2.0",
     "ws": "^7.4.4"

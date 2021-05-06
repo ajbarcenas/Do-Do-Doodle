@@ -21,9 +21,18 @@ body, html{
 
 section#msgContainer {
   position:absolute;
+  overflow: auto;
   right:0;
-  width: 10%;
-  height: 250px;
+  top: 80px;
+  width: 250px;
+  height: 550px;
+}
+
+div#msgHeader {
+  position:absolute;
+  right:0;
+  width: 250px;
+  height: 550px;
 }
 
 section#msgInput {
@@ -36,12 +45,21 @@ section#msgInput {
 
 section#nickBox {
   position: absolute;
-  bottom: 0px;
+  bottom: 20px;
   right: 0;
   width: 250px;
   height: 250px;
 }
 
+
+section#userBox {
+  position: absolute;
+  overflow: auto;
+  bottom: 0px;
+  right: 0;
+  width: 250px;
+  height: 150px;
+}
 section#canvasElement {
   left: 0;
   width: 50%;
