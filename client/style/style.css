@@ -8,4 +8,42 @@ body, html{
 }
 #canvas {
    display: block;
+   width: 50%
+   border: 3px solid #73AD21;
+}
+
+/* div#place {
+  position: absolute;
+  right: 0;
+  width: 250px;
+  height: 250px;
+} */
+
+section#msgContainer {
+  position:absolute;
+  right:0;
+  width: 10%;
+  height: 250px;
+}
+
+section#msgInput {
+  position: absolute;
+  bottom: 100px;
+  right: 0;
+  width: 250px;
+  height: 250px;
+}
+
+section#nickBox {
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  width: 250px;
+  height: 250px;
+}
+
+section#canvasElement {
+  left: 0;
+  width: 50%;
+  height: 250px
 }

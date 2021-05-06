@@ -21,7 +21,7 @@ $('form').submit(function(){
 
 socket.on('chat message', function(msg){
   $("#messages").append("<li><b>"+msg[0]+":</b> "+msg[1]);
-  window.scrollTo(0, document.body.scrollHeight);
+  //window.scrollTo(0, document.body.scrollHeight);
 });
 
 socket.on('info', function(inf){

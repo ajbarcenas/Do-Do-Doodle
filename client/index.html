@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Do-Do-Doodle!!!!</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./style/bootstrap.min.css">
-    <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/style.css">
   <link rel="shortcut icon" href="../public/assets/favicon.png" type="image/png">
-  <link rel="icon" type="image/png" href="../public/assets/favicon.png"/>
+  <link rel="icon" type="image/png" href="../public/assets/favicon.png" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<!--
+  <!--
   <style type="text/css">
     canvas{
       border: 1px solid black;
@@ -20,11 +21,12 @@
   </style>
 -->
 </head>
-   <script src = "/socket.io/socket.io.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 
 <link rel="stylesheet" href="style/master.css">
+
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="">Do-Do-Doodle!</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -37,29 +39,33 @@
           </a>
         </li>
       </ul>
-    </div>
+    </div> -->
 
   </nav>
-  <div id = "place">
-  <div id="container">
-      <section>
+  <div id="place">
+    <div id="container">
+      <aside>
+        <section id="msgContainer">
           <h2>Messages</h2>
           <ul id="messages"></ul>
-      </section>
-      <footer>
-          <h2>Input</h2>
-          <form action="">
-              <input id="boxMessage" autocomplete="off" disabled="true"/><button id="buttonMessage" disabled="true">Send</button>
-          </form>
-      </footer>
+        </section>
+        <footer>
+          <section id="msgInput">
+            <h2>Input</h2>
+            <form action="">
+              <input id="boxMessage" autocomplete="off" disabled="true" /><button id="buttonMessage" disabled="true">Send</button>
+            </form>
+          </section>
+        </footer>
+    </div>
+    <section id="nickBox">
+      <h2>Members</h2>
+      <input id="boxNick" type="text" placeholder="your nickname?" size="13" />
+      <button type="submit" id="buttonNick" onClick="setMyName()">Set</button>
+      <ul id="ulist"></ul>
+    </section>
+    </aside>
   </div>
-    <aside>
-    <h2>Members</h2>
-    <input id="boxNick" type="text" placeholder="your nickname?" size="13"/>
-    <button type="submit" id="buttonNick" onClick="setMyName()">Set</button>
-    <ul id="ulist"></ul>
-  </aside>
-</div>
   <!-- <div id = "toolbar">
 
     <div id = "rad">
@@ -87,12 +93,14 @@
 
 
 
-<script src = "./client.js"> </script>
-      <canvas id="drawing"></canvas>
-<br>
-<br>
-<br>
-<br>
-</button>
+  <script src="./client.js"> </script>
+  <section id="canvasElement">
+    <canvas id="drawing"></canvas>
+  </section>
+  <!-- <br>
+  <br>
+  <br>
+  <br> -->
 </body>
+
 </html>
