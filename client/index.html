@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./style/style.css">
   <link rel="shortcut icon" href="../public/assets/favicon.png" type="image/png">
   <link rel="icon" type="image/png" href="../public/assets/favicon.png" />
+  <link rel="stylesheet" href="style/master.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -21,10 +22,6 @@
   </style>
 -->
 </head>
-<script src="/socket.io/socket.io.js"></script>
-
-<link rel="stylesheet" href="style/master.css">
-
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -58,7 +55,8 @@
           <section id="msgInput">
             <h2>Input</h2>
             <form action="">
-              <input id="boxMessage" autocomplete="off" disabled="true" /><button id="buttonMessage"class="btn btn-primary"disabled="true">Send</button>
+              <input id="boxMessage" autocomplete="off" disabled="true" />
+              <button type="submit" id="buttonMessage" disabled="true">Send</button>
             </form>
           </section>
         </footer>
@@ -66,26 +64,25 @@
     <section id="nickBox">
       <h2>Members</h2>
       <input id="boxNick" type="text" placeholder="your nickname?" size="13" />
-      <button class="btn btn-primary" type="submit" id="buttonNick" onClick="setMyName()">Set</button>
+      <button  id="buttonNick" onClick="setMyName()">Set</button>
     </section>
     <section id="userBox">
       <ul id="ulist"></ul>
     </section>
     </aside>
   </div>
-  <script src="./client.js"> </script>
   <h1 style="color: black;" style="font-size: x-large;"> Guess the drawing </h1>
   <div id="game">
     <div>
       <input type="text" id="guessField" placeholder="Enter your Guess" />
-      <button class="button button5" type="submit" value="Submit" id="submitGuess">Submit Guess</button>
+      <button class="button button5" value="Submit" id="submitGuess">Submit Guess</button>
     </div>
     <p id="result"></p>
   </div>
   <div>
     <h4 style="color: black;">Drag mouse to draw variable width line.</h4>
-    Line Width:&nbsp <input type=range min=1 max=200 id=myslider> <span id=val>50</span>
-    <button class="button button3" type="submit" value="Clear" onclick="clearit();"> Clear </button>
+    Line Width:&nbsp <input type=range min=1 max=200 id=myslider> <span id=val>25</span>
+    <button class="button button3" type="submit" value="Clear" id="resetCanvas"> Clear </button>
   </div>
   <div>
     <select id="colorsMain">
@@ -96,41 +93,17 @@
   </select>
   </div>
 
-  <!-- <div id = "toolbar">
-
-    <div id = "rad">
-      Brush Thickness: <span id = "radval"></span>
-      <button id = "decrad" class = "radcontrol"> - </button>
-      <button id = "incrad" class = "radcontrol"> + </button>
-    </div>
-
-    <div id="resets">
-      <button  id = "undo"  class= "button"> Undo </button>
-      <button onclick="clear_canvas()" id = "clear" class= "button"> Clear </button>
+  <canvas id="drawing"></canvas>
+  <br>
+  <div class="col">
+    <div class="row">
+      <button style="margin-top: 10px; margin-left: 10px;" id="readyButton">Toggle Ready</button>
+      <p style="margin-top: 10px; margin-left: 10px;" id="timer"><span style="color: black"></span></p>
     </div>
   </div>
 
-  <div id = "toolbarWord">
-    <div id="generate"></div>
-    <button class="btn btn-primary" id="roll"> Generate Word </button>
-  </div>
-
-  <canvas id="canvas" style="border: 10px solid black;"> Test </canvas>
-  <script src="Canvas/canvas.js"></script>
-  <script src="Canvas/radius.js"></script>
-  <script src="Canvas/colors.js"></script>
-  <script src="Game/wordGen.js"></script> -->
-
-
-  <!-- <script src="./client.js"> </script> -->
-  <section id="canvasElement">
-    <canvas id="drawing"></canvas>
-  </section>
-  <!-- <br>
-  <br>
-  <br>
-  <br> -->
-
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="./client.js"> </script>
 </body>
 
 </html>
