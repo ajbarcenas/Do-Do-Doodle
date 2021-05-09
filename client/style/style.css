@@ -1,15 +1,15 @@
 * {
-   margin: 0;
-   padding: 0;
+  margin: 0;
+  padding: 0;
 }
-body{
-   width: 100%;
-   height: 100%;
+body {
+  width: 100%;
+  height: 100%;
 }
 #canvas {
-   display: block;
-   width: 50%
-   border: 3px solid #73AD21;
+  display: block;
+  width: 50%;
+  border: 3px solid #73ad21;
 }
 
 /* div#place {
@@ -20,7 +20,7 @@ body{
 } */
 
 section#msgContainer {
-  position:fixed;
+  position: fixed;
   overflow: auto;
   right: 5px;
   top: 95px;
@@ -31,8 +31,8 @@ section#msgContainer {
 }
 
 div#msgHeader {
-  position:absolute;
-  right:0;
+  position: absolute;
+  right: 0;
   width: 250px;
   height: 550px;
 }
@@ -53,7 +53,6 @@ section#nickBox {
   height: 250px;
 }
 
-
 section#userBox {
   position: fixed;
   overflow: auto;
@@ -67,5 +66,5 @@ section#userBox {
 section#canvasElement {
   left: 0;
   width: 50%;
-  height: 250px
+  height: 250px;
 }
