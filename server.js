@@ -11,6 +11,8 @@ var clients = [];
 var increment = 1;
 var line_history = [];
 
+var line_color = [];
+
 //https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css
 
 app.use(express.static(`${__dirname}/client`));
@@ -71,10 +73,15 @@ for (var i in line_history) {
    socket.emit('draw_line', { line: line_history[i] } );
 }
 
+for (var i in line_color) {
+  socket.emit('draw_line', { line: line_color[i] } );
+}
+
 // add handler for message type "draw_line".
 socket.on('draw_line', function (data) {
    // add received line to history
    line_history.push(data.line);
+   line_color.push(data.line);
    // send line to all clients
    io.emit('draw_line', { line: data.line });
 });
