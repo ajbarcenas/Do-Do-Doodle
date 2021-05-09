@@ -10,6 +10,31 @@ var PORT = process.env.PORT || 3000;
 var clients = [];
 var increment = 1;
 var line_history = [];
+var words = [
+ "America",
+ "Balloon",
+ "Biscuit",
+ "Blanket",
+ "Chicken",
+ "Chimney",
+ "Country",
+ "Cupcake",
+ "Curtain",
+ "Diamond",
+ "Eyebrow",
+ "Fireman",
+ "Florida",
+ "Germany",
+ "Harpoon",
+ "Husband",
+ "Morning",
+ "Octopus",
+ "Popcorn",
+ "Printer",
+ "Sandbox",
+ "Skyline",
+ "Spinach"];
+
 
 //https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css
 

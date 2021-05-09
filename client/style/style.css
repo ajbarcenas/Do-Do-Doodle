@@ -22,10 +22,11 @@ body, html{
 section#msgContainer {
   position:absolute;
   overflow: auto;
-  right:0;
-  top: 80px;
+  right: 5px;
+  top: 95px;
   width: 250px;
-  height: 550px;
+  height: 470px;
+  border-style: dotted;
 }
 
 div#msgHeader {
@@ -59,6 +60,7 @@ section#userBox {
   right: 0;
   width: 250px;
   height: 150px;
+  border-style: dotted;
 }
 section#canvasElement {
   left: 0;
