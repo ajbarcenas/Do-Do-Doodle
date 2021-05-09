@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", function() {
    // get canvas element and create context
    var canvas  = document.getElementById('drawing');
    var context = canvas.getContext('2d');
-   var width   = 1500;
-   var height  = 500;
+   var width   = 1200;
+   var height  = 550;
    var socket  = io.connect();
 
    // set canvas to full browser width/height
@@ -87,7 +87,10 @@ document.addEventListener("DOMContentLoaded", function() {
    canvas.style.border = '5px solid black';
 
    // register mouse event handlers
-   canvas.onmousedown = function(e){ mouse.click = true; };
+   canvas.onmousedown = function(e){ 
+     mouse.click = true; 
+     //context.strokeStyle = getValueOfColorPicker;
+    };
    canvas.onmouseup = function(e){ mouse.click = false; };
 
    canvas.onmousemove = function(e) {
@@ -100,22 +103,21 @@ document.addEventListener("DOMContentLoaded", function() {
    // draw line received from server
 	socket.on('draw_line', function (data) {
       var line = data.line;
+      context.color = "red";
       context.beginPath();
       context.moveTo(line[0].x * width, line[0].y * height);
       context.lineTo(line[1].x * width, line[1].y * height);
       context.stroke();
    });
 
-   //When clicked reset the canvas back to an empy canvas
-/*    $("#resetCanvas").click(function(){
-    var canvas= document.getElementById('drawing');
-   var ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0,  canvas.width, canvas.height);
-  }); */
   socket.on('clearit', function(){
     context.clearRect(0, 0, width, height);
     console.log("client clearit");
     });
+
+  socket.on('colorsMain', function(){
+    context.strokeStyle = getValueOfColorPicker;
+  });
 
    // main loop, running every 25ms
    function mainLoop() {
@@ -126,6 +128,12 @@ document.addEventListener("DOMContentLoaded", function() {
          mouse.move = false;
       }
       mouse.pos_prev = {x: mouse.pos.x, y: mouse.pos.y};
+
+      var getColorPickerByID = document.getElementById("colorsMain");
+      var getValueOfColorPicker = getColorPickerByID.options[getColorPickerByID.selectedIndex].text;
+      var canvas = document.getElementById('drawing');
+      var context = canvas.getContext('2d');
+      context.strokeStyle = getValueOfColorPicker;
       setTimeout(mainLoop, 25);
 
       $("#resetCanvas").click(function(){
@@ -133,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function() {
        var ctx = canvas.getContext('2d');
           ctx.clearRect(0, 0,  canvas.width, canvas.height);
       });
-
    }
 
    //Put all this in its own function
