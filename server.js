@@ -32,7 +32,17 @@ var words = [
   "Printer",
   "Sandbox",
   "Skyline",
-  "Spinach"
+  "Spinach",
+  "Turtle",
+  "Pizza",
+  "Apple",
+  "California",
+  "Violin",
+  "Map",
+  "Flower",
+  "Phone",
+  "Cone",
+  "Fish"
 ];
 
 var game = {
