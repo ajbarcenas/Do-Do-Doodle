@@ -23,9 +23,9 @@ section#msgContainer {
   position: fixed;
   overflow: auto;
   right: 5px;
-  top: 95px;
+  top: 85px;
   width: 250px;
-  height: 470px;
+  height: 455px;
   border: 4px dotted green;
   background-color: rgba(152, 255, 152, 0.1);
 }
