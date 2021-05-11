@@ -57,6 +57,7 @@ var game = {
         clients[key].ready = false;
         clients[key].correct = false;
         clients[key].guesses = 0;
+        // clients[key].score = 0;
       });
 
       io.emit('lines', line_history);
@@ -108,7 +109,8 @@ function getUsersList(){
       isArtist: key == game.artist,
       isReady: clients[key].ready,
       isCorrect: clients[key].correct,
-      isDisabled: clients[key].guesses >= MAX_GUESSES && !clients[key].correct
+      isDisabled: clients[key].guesses >= MAX_GUESSES && !clients[key].correct,
+      score: clients[key].score
     };
   });
 
@@ -137,7 +139,8 @@ io.on('connection', function(socket) {
     name: `guest${Object.keys(clients).length+1}`,
     ready: false,
     correct: false,
-    guesses: 0
+    guesses: 0,
+    score: 0
   };
 
   if (game.artist == null) {  //server was empty
@@ -208,6 +211,7 @@ io.on('connection', function(socket) {
       if (!clients[socket.id].correct && clients[socket.id].guesses < MAX_GUESSES && game.word.toLowerCase() == guess.toLowerCase()) {
           console.log("here")
           clients[socket.id].correct = true;
+          clients[socket.id].score++;
       } else {
         clients[socket.id].guesses++;
       }

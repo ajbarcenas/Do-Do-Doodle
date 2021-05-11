@@ -1,5 +1,4 @@
 var myNick = "";
-
 var socket = io();
 
 // get canvas element and create context
@@ -31,10 +30,9 @@ function updateUserList(u){
   list.innerHTML = "";
 
   for (var i = 0; i < u.length; i++ ) {
-      let {name, isArtist, isCorrect, isReady, isDisabled} = u[i];
+      let {name, isArtist, isCorrect, isReady, isDisabled, score} = u[i];
       let color = 'black';
       let item = document.createElement("li");
-
       if (isArtist) {
         color = 'cyan';
       } else if (isCorrect) {
@@ -43,7 +41,7 @@ function updateUserList(u){
         color = 'red';
       }
 
-      item.innerHTML = `<span style="color: ${color}">${name}${isReady ? "&#10003" : ""}</span>`;
+      item.innerHTML = `<span style="color: ${color}">${name}${isReady ? "&#10003" : ""} ${score}</span>`;
 
       list.appendChild(item);
   }
@@ -201,4 +199,5 @@ $("#readyButton").click(function() {
 
 $("#submitGuess").click(function() {
   socket.emit('guess', $("#guessField").val());
+  $("#guessField").val("");
 });
